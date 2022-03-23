@@ -18,7 +18,12 @@ namespace TestWeb.Pages
         public static string Header { get; set; } = "I'm your default header";
         public static string HeaderColor { get; set; } = "I'm your default color";
 
-        public async void OnGetAsync()
+        public void OnGet()
+        {
+            
+        }
+        
+        public async Task OnPostAsync()
         {
             var connectionString = "server=127.0.0.1; user id=test-user;database=test-web-database";
 
@@ -26,28 +31,16 @@ namespace TestWeb.Pages
             try
             {
                 await connection.OpenAsync();
-                
-                var sqlcmd = new MySqlCommand("SELECT * FROM `test-web-table`",connection);
-                MySqlDataReader rdr = sqlcmd.ExecuteReader();
-                while (await rdr.ReadAsync())
-                {
-                    Console.WriteLine(rdr[1]);
-                }
-                await rdr.CloseAsync();
+
+                var sqlcmd = new MySqlCommand($"INSERT INTO `test-web-table` (text) VALUES ('{Request.Form["textForTestDatabase"]}')", connection);
+                Console.WriteLine(sqlcmd.ExecuteNonQuery());
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Console.WriteLine(ex.ToString());
                 Console.WriteLine("Failed");
             }
-        }
-        public void OnPost()
-        {
-            
-            //Header = Request.Form["mytext"];
-            //Console.WriteLine(Header);
-            //HeaderColor = "red";
-            
+            await connection.CloseAsync();
         }
     }
 }
