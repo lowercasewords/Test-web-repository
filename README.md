@@ -1,2 +1,2 @@
 # Test-web-ripository
-This project exists for the sole purpose of education myself the basic principles of web dev, like creating and managing a database, using ASP.NET Core framework, front end languages and later maybe libraries.
+This project exists for the sole purpose of education myself the basic principles of ASP.NET CORE. How does it work, how to use query the database, basic front-end vanilla stuff. My next project will be a 'more serious' website. But I'll get there!
