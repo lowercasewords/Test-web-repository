@@ -1,0 +1,25 @@
+﻿@page
+@model TestWeb.Pages.CustomPageModel
+@{
+    ViewData["Title"] = "Custom Page";
+    Layout = "_CustomLayout";
+}
+<div class="text-center">
+    <h1 style="color:@CustomPageModel.HeaderColor; font-weight:normal">@CustomPageModel.Header</h1>
+    <form  method="post">
+        <input type="text" name="mytext"/>
+        <button type="submit">Click me to post</button>
+    </form>
+    <form method="post">
+        <input type="text" name="mytext"/>
+        <button type="submit">Click at me to post with again?</button>
+    </form>
+    <form method="get">
+        <button type="submit">Click me to get</button>
+    </form>
+    <form method="post">
+        <input type="text" name="textForTestDatabase"/>
+        <h6>By clicking you will post the text into a database with a unique ID, hopefully...</h6>
+        <button type="submit" name="submitbutton">SUBMIT</button>
+    </form>
+</div>
